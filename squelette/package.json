@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env serveur.js",
     "dev": "node --watch --env-file-if-exists=.env serveur.js",
-    "reinitialiser": "node scripts/reinitialiser.js",
+    "reinitialiser": "node --env-file-if-exists=.env scripts/reinitialiser.js",
     "verifier": "node --env-file-if-exists=.env scripts/verifier.js"
   },
   "dependencies": {
