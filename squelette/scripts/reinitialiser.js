@@ -1,9 +1,20 @@
-// Remet data/commentaires.json dans son etat de depart (huit commentaires).
-// Utile tant que le service des commentaires est la version JSON.
-//    npm run reinitialiser
+// Reinitialise la table PostgreSQL commentaires avec les huit donnees initiales.
+// La table des articles doit deja exister (db/ateliers.sql).
 const fs = require('fs');
 const path = require('path');
+const pool = require('../db/pool');
 
-const dossier = path.join(__dirname, '..', 'data');
-fs.copyFileSync(path.join(dossier, 'commentaires.initial.json'), path.join(dossier, 'commentaires.json'));
-console.log('data/commentaires.json remis a zero : 8 commentaires.');
+async function reinitialiser() {
+  const sql = fs.readFileSync(path.join(__dirname, '..', 'sql', 'commentaires.sql'), 'utf8');
+  try {
+    await pool.query(sql);
+    console.log('Table commentaires reinitialisee avec les huit commentaires initiaux.');
+  } finally {
+    await pool.end();
+  }
+}
+
+reinitialiser().catch((err) => {
+  console.error('Impossible de reinitialiser les commentaires :', err.message);
+  process.exitCode = 1;
+});
