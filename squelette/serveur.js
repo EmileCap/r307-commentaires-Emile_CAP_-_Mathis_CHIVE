@@ -2,7 +2,7 @@
 // L'ordre des app.use est l'ordre que suit chaque requete, de haut en bas.
 //
 //    1. la base ateliers existe, db/ateliers.sql y a ete execute (voir COMMENCER-ICI.md)
-//    2. npm run reinitialiser   (une fois : cree data/commentaires.json)
+//    2. executer sql/commentaires.sql pour creer et remplir la table
 //    3. npm start
 
 const express = require('express');

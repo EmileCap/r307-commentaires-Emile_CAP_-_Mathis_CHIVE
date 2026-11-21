@@ -43,6 +43,8 @@ npm run reinitialiser
 npm start
 ```
 
+`npm run reinitialiser` recrée la table PostgreSQL `commentaires` et ses huit lignes initiales. La base `ateliers` doit déjà exister avec `db/ateliers.sql` exécuté.
+
 4. Dans un second terminal : `npm run verifier`. Au départ : **5 / 31**.
 
 ## 4. Le travail
